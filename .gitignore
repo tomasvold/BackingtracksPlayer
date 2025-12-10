@@ -1,0 +1,17 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.cpython-*.pyc
+
+# Virtual Environment
+venv/
+.venv/
+env/
+.env/
+
+# Large, volatile, or non-essential assets
+# EXCLUDE the folder containing your main music library
+MusicFolder/
+
+# IDE/Editor files (VS Code)
+.vscode/

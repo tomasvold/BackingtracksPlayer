@@ -1,0 +1,248 @@
+/* static/style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.main-container {
+    background-color: #3e3e3e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 95%;
+    max-width: 800px;
+    display: grid;
+    grid-template-areas:
+        "controls playlist";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 3fr;
+    gap: 0;
+}
+
+.controls-container {
+    grid-area: controls;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.super-button {
+    width: 120px;
+    height: 120px;
+    font-size: 4em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.play-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.stop-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.super-button:hover {
+    transform: scale(1.05);
+}
+
+.playlist-container {
+    grid-area: playlist;
+    background-color: #4a4a4a;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+
+h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+#playlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#playlist li {
+    background-color: #555;
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+#playlist li:hover {
+    background-color: #666;
+}
+
+.remove-button {
+    background: none;
+    border: none;
+    color: #f0f0f0;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.remove-button:hover {
+    color: #ff6347;
+}
+
+.dragging {
+    /* Change the opacity or remove it for a different effect */
+    opacity: 0.8; 
+    /* Or try a different background color */
+    background-color: #888; 
+}
+
+.playing-track {
+    background-color: #28a745 !important;
+    font-weight: bold;
+    color: white;
+}
+
+.available-tracks-container {
+    background-color: #3e3e3e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+    width: 300px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+#available-tracks {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#available-tracks li {
+    background-color: #555;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#available-tracks li:hover {
+    background-color: #666;
+}
+
+@media (max-width: 1040px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "controls"
+            "playlist";
+        max-width: 95%;
+        margin-bottom: 20px;
+    }
+    .controls-container {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        gap: 20px;
+    }
+    .super-button {
+        width: 80px;
+        height: 80px;
+        font-size: 3em;
+    }
+    .playlist-container {
+        max-height: 60vh;
+    }
+    .available-tracks-container {
+        margin-left: 0;
+        width: 95%;
+        max-width: none;
+    }
+}
+
+/* Custom Scrollbar Styling */
+.playlist-container::-webkit-scrollbar {
+    width: 50px;
+}
+
+.playlist-container::-webkit-scrollbar-track {
+    background: #4a4a4a;
+    border-radius: 10px;
+}
+
+.playlist-container::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 10px;
+    border: 3px solid #4a4a4a;
+}
+
+/* Add similar styling for the available tracks container */
+.available-tracks-container::-webkit-scrollbar {
+    width: 15px;
+}
+
+.available-tracks-container::-webkit-scrollbar-track {
+    background: #4a4a4a;
+    border-radius: 10px;
+}
+
+.available-tracks-container::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 10px;
+    border: 3px solid #4a4a4a;
+}
+
+.drag-handle {
+    cursor: grab;
+    font-size: 1.5em;
+    margin-right: 15px;
+    color: #f0f0f0;
+}
+
+#encouragement-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+.logo {
+    max-width: 130px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pi Backing Tracks Controller</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="controls-container">
+            <button id="play-pause-button" class="super-button play-button">▶️</button>
+           	<div id="encouragement-text">
+		<img src="{{ url_for('static', filename='your-logo.png') }}" alt="Your Logo" class="logo">
+		</div>
+	    <button id="stop-button" class="super-button stop-button">⏹️</button>
+        </div>
+
+        <div class="playlist-container">
+            <h2>Playlist</h2>
+            <ul id="playlist">
+                </ul>
+        </div>
+    </div>
+
+    <div class="available-tracks-container">
+        <h2>Available Tracks</h2>
+        <ul id="available-tracks">
+            </ul>
+    </div>
+    
+    <script>
+        // Function to toggle fullscreen
+        function toggleFullscreen() {
+            fetch('/fullscreen', {
+                method: 'POST'
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Failed to toggle fullscreen');
+                }
+            })
+            .catch(error => {
+                console.error('Error toggling fullscreen:', error);
+            });
+        }
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
