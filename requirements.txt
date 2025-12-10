@@ -1,0 +1,6 @@
+Flask
+pygame
+python-dotenv
+# RPi.GPIO (Pi-only - needed on the Raspberry Pi for hardware control)
+# Gunicorn is recommended for production deployment on Linux/Pi
+# gunicorn
