@@ -65,4 +65,4 @@ pip install -r requirements.txt
 # Add your backing tracks (MP3 or WAV) to the 'MusicFolder' directory.
 
 # Start the Flask application
-python app.py (or go to http://localhost:5000 in your web browswer)
+python app.py (or go to http://127.0.0.1:5000 in your web browswer)
