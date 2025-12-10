@@ -50,11 +50,8 @@ The application is structured for portability and clear separation of concerns:
 
 ## 💾 Installation and Local Run
 
-### 1. Clone the Repository & Setup Environment
-
-The first step is always to clone the repository and set up the environment on the Raspberry Pi:
-
 ```bash
+# The first step is always to clone the repository and set up the environment on the Raspberry Pi:
 git clone [https://github.com/tomasvold/BackingtracksPlayer.git](https://github.com/tomasvold/BackingtracksPlayer.git)
 cd BackingtracksPlayer
 
