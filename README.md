@@ -1,6 +1,6 @@
-# 🎶 BackingtracksPlayer (Raspberry Pi Edition)
+# 🎶 BackingtracksPlayer (for Raspberry Pi)
 
-A portable, web-controlled media player built with Python/Flask and the Pygame mixer. This application is designed to run on a headless Raspberry Pi, allowing you to manage and play local backing tracks via any web browser on your network.
+A portable, offline web-controlled audioplayer built with Python/Flask. Built to run on a headless Raspberry Pi to manage and play local backing tracks via any web browser.
 
 ---
 
@@ -8,8 +8,7 @@ A portable, web-controlled media player built with Python/Flask and the Pygame m
 
 * **Portable Architecture:**
     * Uses a **hardware abstraction layer** via `try/except` imports in `app.py`.
-    * Automatically switches between the real `Player.py` (with Pygame) and `MockPlayer.py` (simulated playback) for easy development on a PC.
-    * Uses `MockGPIOClass.py` for testing hardware interaction logic without RPi.GPIO dependencies.
+    * Automatically switches between the real `Player.py` (Pygame) for deployment and `MockPlayer.py`/`MockGPIOClass.py` for easy PC development and testing.
 * **Persistent Playlist Management:**
     * Features a clean web interface built with HTML, CSS, and vanilla JavaScript.
     * Supports drag-and-drop reordering of tracks within the playlist.
@@ -51,28 +50,22 @@ The application is structured for portability and clear separation of concerns:
 
 ## 💾 Installation and Local Run
 
----
+### 1. Clone the Repository & Setup Environment
 
-## 💾 Installation and Local Run
+The first step is always to clone the repository and set up the environment on the Raspberry Pi:
 
-### 1. Requirements
-
-Dependencies are listed in the `requirements.txt` file, which includes:
-
-```text
-Flask
-pygame
-python-dotenv
-# RPi.GPIO (Pi-only - needed on the Raspberry Pi for hardware control)
-# gunicorn (Recommended for production deployment on Linux/Pi)
-
+```bash
 git clone [https://github.com/tomasvold/BackingtracksPlayer.git](https://github.com/tomasvold/BackingtracksPlayer.git)
 cd BackingtracksPlayer
 
-### 🚀 Final Push Plan
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate
 
-Since you created the README manually on GitHub, we need to handle this carefully to avoid conflicts when you push from your local machine.
+# Install Python dependencies
+pip install -r requirements.txt
 
-The most straightforward way is to push the local changes (`requirements.txt`) first, then pull the remote changes (`README.md`), and push again.
+# Add your backing tracks (MP3 or WAV) to the 'MusicFolder' directory.
 
-**Please confirm you have updated the local `README.md` file (in VS Code) with the final corrected text.** Then, we can run the final Git commands!
+# Start the Flask application
+python app.py (or go to http://localhost:5000 in your web browswer)
