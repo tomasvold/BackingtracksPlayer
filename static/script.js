@@ -76,7 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function handleRemoveFile(e) {
         e.stopPropagation();
-        const filename = e.target.dataset.filename;
+
+        // Fix: Look for the closest 'li' element to get the filename
+        const listItem = e.target.closest('li');
+        const filename = listItem.dataset.filename;
+
         if (confirm(`Are you sure you want to remove '${filename}' from the playlist?`)) {
             const response = await fetch(`/api/remove_file`, {
                 method: 'POST',
@@ -99,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ filename })
         });
-        
+
         if (response.ok) {
             loadAllTracks();
         } else {
@@ -143,14 +147,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const newOrder = Array.from(listItems).map(item => item.dataset.filename);
         await savePlaylistOrder(newOrder);
     }
-    
+
     async function savePlaylistOrder(newOrder) {
         const response = await fetch(`/api/reorder_playlist`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ new_order: newOrder })
         });
-        
+
         if (response.ok) {
             console.log('Playlist order saved successfully.');
         } else {
@@ -186,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
         console.log('Playback state:', data.state);
         playPauseButton.textContent = '▶️';
-        
+
         if (currentlyPlaying) {
             currentlyPlaying.classList.remove('playing-track');
         }
@@ -207,6 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error loading tracks:', error);
         }
     }
-    
+
     loadAllTracks();
 });
